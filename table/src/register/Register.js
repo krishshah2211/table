@@ -180,7 +180,12 @@ const SignUp = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
+    if (isFormIncomplete) {
+        alert('Please complete the form');
+      } else {
+  
+        alert('Form is submitted');
+      }
     const errors = {};
 
     if (!userData.username) {
