@@ -5,6 +5,7 @@ import './App.css';
 import DynamicTable from './Project/StaticTable';
 import StaticTable from './Project/StaticTable';
 import SignUp from './register/Register';
+import Register from './register/Register';
 
 function App() {
   return (
@@ -13,7 +14,8 @@ function App() {
    <SignUp/>
    <Component/> */}
 {/* <MyComponent/> */}
-<UpdateTable/>
+{/* <UpdateTable/> */}
+<Register/>
     </div>
     
   );
