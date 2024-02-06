@@ -17,9 +17,9 @@ function App() {
    <Component/> */}
 {/* <MyComponent/> */}
 <UpdateTable/>
-{/* <Register/>
+<Register/>
 <AlertRegister/>
-<UpdateRegisterForm/> */}
+<UpdateRegisterForm/>
     </div>
     
   );
