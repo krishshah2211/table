@@ -37,8 +37,8 @@ const UpdateRegisterForms = () => {
       newErrors.username = "Username must be at least 3 characters";
       alert("Username must be at least 3 characters");
     }
-
-    if (!formData.email || !/[[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]]/.test(formData.email)) {
+    const RegEx = /[a-zA-Z0-9]+@[a-z0-9.-]+\.[a-z]{2,8}(.[a-z{2,8}])?/g;
+    if (!formData.email|| !RegEx.test(formData.email) ) {
       newErrors.email = " Correct Regular Expression is required";
       alert("Correct Regular Expression is required");
     }

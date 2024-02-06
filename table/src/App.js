@@ -11,6 +11,7 @@ import UpdateRegisterForm from './register/UpdateRegisterForm';
 import ErrorInOne from './register/ErrorInOne';
 import AllErrorInOne from './register/ErrorInOne';
 import UpdateRegisterForms from './register/ErrorInOne';
+import UpdateRegisterFormss from './RegularExpression/RegExp';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
 <Register/>
 <AlertRegister/>
 <UpdateRegisterForms/>
+<UpdateRegisterFormss/>
     </div>
     
   );
