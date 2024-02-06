@@ -1,18 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
 const UpdateRegisterForms = () => {
   const [formData, setFormData] = useState({
-    username: '',
-    email: '',
-    password: '',
-    confirmPassword: '',
+    username: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
   });
 
   const [errors, setErrors] = useState({
-    username: '',
-    email: '',
-    password: '',
-    confirmPassword: '',
+    username: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
   });
 
   const handleChange = (e) => {
@@ -22,10 +22,9 @@ const UpdateRegisterForms = () => {
       [name]: value,
     }));
 
-    
     setErrors((prevErrors) => ({
       ...prevErrors,
-      [name]: '',
+      [name]: "",
     }));
   };
 
@@ -35,32 +34,35 @@ const UpdateRegisterForms = () => {
     const newErrors = {};
 
     if (!formData.username || formData.username.length < 3) {
-      newErrors.username = 'Username must be at least 3 characters';
-      alert('Username must be at least 3 characters')
+      newErrors.username = "Username must be at least 3 characters";
+      alert("Username must be at least 3 characters");
     }
 
     if (!formData.email) {
-      newErrors.email = 'Email is required';
-      alert('Email is required')
+      newErrors.email = "Email is required";
+      alert("Email is required");
     }
 
-    if (!formData.password || formData.password.length < 4 || !/[#@_-]/.test(formData.password)) {
-      newErrors.password = 'Password must be at least 4 characters and contain #, @, _, or -';
-   alert('Password must be at least 4 characters and contain #, @, _, or -')
+    if (
+      !formData.password ||
+      formData.password.length < 4 ||
+      !/[#@_-]/.test(formData.password)
+    ) {
+      newErrors.password =
+        "Password must be at least 4 characters and contain #, @, _, or -";
+      alert("Password must be at least 4 characters and contain #, @, _, or -");
     }
 
     if (formData.password !== formData.confirmPassword) {
-      newErrors.confirmPassword = 'Passwords do not match';
-      alert('Password do not match')
+      newErrors.confirmPassword = "Passwords do not match";
+      alert("Password do not match");
     }
 
-    
     setErrors(newErrors);
 
     if (Object.keys(newErrors).length === 0) {
-      
-      console.log('Form Data:', formData);
-      alert('Form is submitted');
+      console.log("Form Data:", formData);
+      alert("Form is submitted");
     }
   };
 
@@ -109,7 +111,9 @@ const UpdateRegisterForms = () => {
             value={formData.confirmPassword}
             onChange={handleChange}
           />
-          {errors.confirmPassword && <p className="error">{errors.confirmPassword}</p>}
+          {errors.confirmPassword && (
+            <p className="error">{errors.confirmPassword}</p>
+          )}
         </label>
         <br />
 
