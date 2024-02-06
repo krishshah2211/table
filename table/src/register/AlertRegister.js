@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
-const Register = () => {
+const AlertRegister = () => {
   const [formData, setFormData] = useState({
-    username: '',
-    email: '',
-    password: '',
-    confirmPassword: '',
+    username: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
   });
 
   const handleChange = (e) => {
@@ -19,8 +19,18 @@ const Register = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    console.log('Form Data:', formData);
+    if (
+      !formData.username ||
+      !formData.email ||
+      !formData.password ||
+      !formData.confirmPassword
+    ) {
+      alert("Please complete the form");
+    } else {
+      console.log("Form Data:", formData);
 
+      alert("Form is submitted");
+    }
   };
 
   return (
@@ -73,5 +83,4 @@ const Register = () => {
   );
 };
 
-export default Register;
-
+export default AlertRegister;

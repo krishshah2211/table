@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 
-const Register = () => {
+const UpdateRegisterForm = () => {
   const [formData, setFormData] = useState({
     username: '',
     email: '',
     password: '',
     confirmPassword: '',
+   
   });
 
   const handleChange = (e) => {
@@ -19,8 +20,23 @@ const Register = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    console.log('Form Data:', formData);
+    
+    if (!formData.username || formData.username.length < 3) {
+      alert('Username must be at least 3 characters');
+    } else if (!formData.email) {
+      alert('Email is required');
+    } else if (!formData.password || formData.password.length < 4 || !/[#@_-]/.test(formData.password)) {
+      alert('Password must be at least 4 characters and contain #, @, _, or -');
+    } else if (formData.password !== formData.confirmPassword) {
+      alert('Passwords do not match');
+    }
+    else {
 
+      console.log('Form Data:', formData);
+
+      
+      alert('Form is submitted');
+    }
   };
 
   return (
@@ -67,11 +83,12 @@ const Register = () => {
           />
         </label>
         <br />
+
+        
         <button type="submit">Register</button>
       </form>
     </div>
   );
 };
 
-export default Register;
-
+export default UpdateRegisterForm;
