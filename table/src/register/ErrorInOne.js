@@ -1,12 +1,18 @@
 import React, { useState } from 'react';
 
-const UpdateRegisterForm = () => {
+const UpdateRegisterForms = () => {
   const [formData, setFormData] = useState({
     username: '',
     email: '',
     password: '',
     confirmPassword: '',
-   
+  });
+
+  const [errors, setErrors] = useState({
+    username: '',
+    email: '',
+    password: '',
+    confirmPassword: '',
   });
 
   const handleChange = (e) => {
@@ -15,26 +21,45 @@ const UpdateRegisterForm = () => {
       ...prevData,
       [name]: value,
     }));
+
+    
+    setErrors((prevErrors) => ({
+      ...prevErrors,
+      [name]: '',
+    }));
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    
+    const newErrors = {};
+
     if (!formData.username || formData.username.length < 3) {
-      alert('Username must be at least 3 characters');
-    } else if (!formData.email) {
-      alert('Email is required');
-    } else if (!formData.password || formData.password.length < 4 || !/[#@_-]/.test(formData.password)) {
-      alert('Password must be at least 4 characters and contain #, @, _, or -');
-    } else if (formData.password !== formData.confirmPassword) {
-      alert('Passwords do not match');
+      newErrors.username = 'Username must be at least 3 characters';
+      alert('Username must be at least 3 characters')
     }
-    else {
 
-      console.log('Form Data:', formData);
+    if (!formData.email) {
+      newErrors.email = 'Email is required';
+      alert('Email is required')
+    }
 
+    if (!formData.password || formData.password.length < 4 || !/[#@_-]/.test(formData.password)) {
+      newErrors.password = 'Password must be at least 4 characters and contain #, @, _, or -';
+   alert('Password must be at least 4 characters and contain #, @, _, or -')
+    }
+
+    if (formData.password !== formData.confirmPassword) {
+      newErrors.confirmPassword = 'Passwords do not match';
+      alert('Password do not match')
+    }
+
+    
+    setErrors(newErrors);
+
+    if (Object.keys(newErrors).length === 0) {
       
+      console.log('Form Data:', formData);
       alert('Form is submitted');
     }
   };
@@ -51,6 +76,7 @@ const UpdateRegisterForm = () => {
             value={formData.username}
             onChange={handleChange}
           />
+          {errors.username && <p className="error">{errors.username}</p>}
         </label>
         <br />
         <label>
@@ -61,6 +87,7 @@ const UpdateRegisterForm = () => {
             value={formData.email}
             onChange={handleChange}
           />
+          {errors.email && <p className="error">{errors.email}</p>}
         </label>
         <br />
         <label>
@@ -71,6 +98,7 @@ const UpdateRegisterForm = () => {
             value={formData.password}
             onChange={handleChange}
           />
+          {errors.password && <p className="error">{errors.password}</p>}
         </label>
         <br />
         <label>
@@ -81,15 +109,14 @@ const UpdateRegisterForm = () => {
             value={formData.confirmPassword}
             onChange={handleChange}
           />
+          {errors.confirmPassword && <p className="error">{errors.confirmPassword}</p>}
         </label>
         <br />
 
-        
         <button type="submit">Register</button>
       </form>
     </div>
   );
 };
 
-export default UpdateRegisterForm;
-
+export default UpdateRegisterForms;
